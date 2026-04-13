@@ -195,7 +195,7 @@ App runs at `http://localhost:5173`
 ## 👩💻 Author
 
 **Shreya Gupta**  
-B.Tech ECE-AI @ IGDTUW | Backend & AI Engineer  
+B.Tech ECE-AI @ IGDTUW | Sofware & AI Engineering enthusiast
 [GitHub](https://github.com/shreya-osr5513) · [LinkedIn](https://linkedin.com)
 
 ---
