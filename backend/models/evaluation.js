@@ -66,6 +66,24 @@ const evaluationSchema = new mongoose.Schema(
       college: { type: Boolean, default: false },
       name: { type: Boolean, default: false },
     },
+
+    // Immutable snapshots generated at submission time
+    semanticScore: {
+      type: Number,
+      default: 0,
+    },
+    matchedSkills: {
+      type: [String],
+      default: [],
+    },
+    missingSkills: {
+      type: [String],
+      default: [],
+    },
+    recommendations: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true }
 );

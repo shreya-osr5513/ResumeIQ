@@ -15,6 +15,21 @@ const roleSchema = new mongoose.Schema(
     isActive: {
       type: Boolean,
       default: true,
+    },
+    // JD Intelligence Metadata
+    skills: [String],
+    experience: String,
+    domain: String,
+    difficulty: String,
+    embedding: [Number],
+    rubric: {
+      type: Map,
+      of: Number
+    },
+    blueprint: {
+      technicalQuestions: [String],
+      behavioralQuestions: [String],
+      systemDesignQuestions: [String]
     }
   },
   { timestamps: true }

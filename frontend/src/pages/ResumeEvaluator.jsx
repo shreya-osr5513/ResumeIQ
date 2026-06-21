@@ -127,20 +127,44 @@ export default function ResumeEvaluator() {
                 <h2 className="outfit-font" style={{ fontSize: '2.5rem', marginBottom: '8px' }}>Verdict: 
                   <span style={{ color: report.decision === 'Selected' ? 'var(--success-color)' : report.decision === 'Borderline' ? '#fbbf24' : 'var(--danger-color)', marginLeft: '12px' }}>{report.decision}</span>
                 </h2>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Overall Score: <strong style={{ color: 'white' }}>{report.scores?.finalScore}/100</strong> • Semantic Skill Match: <strong style={{ color: 'white' }}>{report.scores?.skillMatch}%</strong></p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
+                  Overall Score: <strong style={{ color: 'white' }}>{report.scores?.finalScore}/100</strong> • 
+                  Semantic Match: <strong style={{ color: 'var(--accent-color)' }}>{Math.round(report.semanticScore || 0)}%</strong>
+                </p>
               </div>
               
-              <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: `conic-gradient(var(--accent-color) ${report.scores?.finalScore}%, rgba(255,255,255,0.05) 0)`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(59,130,246,0.2)' }}>
+              <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: `conic-gradient(var(--accent-color) ${report.semanticScore || 0}%, rgba(255,255,255,0.05) 0)`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(59,130,246,0.2)' }}>
                  <div style={{ width: '100px', height: '100px', borderRadius: '50%', background: 'var(--bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 'bold' }}>
-                   {report.scores?.finalScore}
+                   {Math.round(report.semanticScore || 0)}
                  </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '24px', marginBottom: '40px' }}>
+              <div style={{ flex: 1, padding: '24px', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-subtle)', borderRadius: '16px' }}>
+                <h3 className="outfit-font" style={{ marginBottom: '16px', color: 'var(--success-color)', fontSize: '1.2rem' }}>Matched Skills</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {report.skillGap?.matchedSkills?.map((s, i) => (
+                    <span key={i} style={{ padding: '6px 12px', background: 'rgba(16,185,129,0.2)', color: 'var(--success-color)', borderRadius: '20px', fontSize: '0.9rem', border: '1px solid var(--success-color)' }}>{s}</span>
+                  ))}
+                  {(!report.skillGap || report.skillGap.matchedSkills?.length === 0) && <span style={{ color: 'var(--text-secondary)' }}>None identified</span>}
+                </div>
+              </div>
+              <div style={{ flex: 1, padding: '24px', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-subtle)', borderRadius: '16px' }}>
+                <h3 className="outfit-font" style={{ marginBottom: '16px', color: 'var(--danger-color)', fontSize: '1.2rem' }}>Missing Skills</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {report.skillGap?.missingSkills?.map((s, i) => (
+                    <span key={i} style={{ padding: '6px 12px', background: 'rgba(244,63,94,0.2)', color: 'var(--danger-color)', borderRadius: '20px', fontSize: '0.9rem', border: '1px solid var(--danger-color)' }}>{s}</span>
+                  ))}
+                  {(!report.skillGap || report.skillGap.missingSkills?.length === 0) && <span style={{ color: 'var(--text-secondary)' }}>None identified</span>}
+                </div>
               </div>
             </div>
 
             <div style={{ marginBottom: '40px' }}>
               <h3 className="outfit-font" style={{ marginBottom: '16px', color: 'var(--text-secondary)', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Machine Learning Reasoning</h3>
               <p style={{ background: 'rgba(0,0,0,0.4)', padding: '24px', borderRadius: '12px', color: '#f3f4f6', fontSize: '1.1rem', borderLeft: '4px solid var(--accent-color)', lineHeight: '1.7' }}>
-                {report.explanation}
+                {report.explanation || report.reason}
               </p>
             </div>
 
@@ -163,8 +187,13 @@ export default function ResumeEvaluator() {
             <div>
                <h3 className="outfit-font" style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.3rem', color: '#fbbf24' }}><AlertCircle color="#fbbf24" size={24} /> Actionable Improvements</h3>
                <ul style={{ listStyle: 'none', padding: 0 }}>
+                 {report.skillGap?.recommendations?.map((imp, i) => (
+                    <li key={i} style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)', borderRadius: '12px', marginBottom: '12px', fontSize: '1.05rem', color: '#f3f4f6' }}>
+                       {imp}
+                    </li>
+                  ))}
                  {report.improvements?.map((imp, i) => (
-                   <li key={i} style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)', borderRadius: '12px', marginBottom: '12px', fontSize: '1.05rem', color: '#f3f4f6' }}>
+                   <li key={i+100} style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)', borderRadius: '12px', marginBottom: '12px', fontSize: '1.05rem', color: '#f3f4f6' }}>
                       {imp}
                    </li>
                  ))}

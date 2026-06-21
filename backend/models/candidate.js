@@ -32,6 +32,10 @@ const candidateSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    questions: {
+      type: [String],
+      default: [],
+    },
 
     resumeText: {
       type: String,
@@ -58,6 +62,25 @@ const candidateSchema = new mongoose.Schema(
       type: String,
       enum: ["Pending", "Evaluated"],
       default: "Pending",
+    },
+
+    // New Intelligence Fields
+    resumeEmbedding: {
+      type: [Number],
+      default: [],
+    },
+    jobEmbedding: {
+      type: [Number],
+      default: [],
+    },
+    semanticScore: {
+      type: Number,
+      default: 0,
+    },
+    skillGap: {
+      matchedSkills: [String],
+      missingSkills: [String],
+      recommendations: [String],
     },
   },
   { timestamps: true }

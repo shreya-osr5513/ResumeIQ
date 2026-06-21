@@ -1,33 +1,71 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import Candidate from "./models/candidate.js";
+import Role from "./models/role.js";
+import Evaluation from "./models/evaluation.js";
+import InterviewEvaluation from "./models/InterviewEvaluation.js";
+import Logs from "./models/logsModel.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+dotenv.config();
 
-dotenv.config({ path: path.join(__dirname, '.env') });
-
-async function clearDB() {
-    try {
-        console.log('Connecting to MongoDB...');
-        await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/fairhire');
-        
-        console.log('Clearing Candidates...');
-        await mongoose.connection.collection('candidates').deleteMany({});
-        
-        console.log('Clearing Evaluations...');
-        await mongoose.connection.collection('evaluations').deleteMany({});
-        
-        console.log('Clearing Roles...');
-        await mongoose.connection.collection('roles').deleteMany({});
-        
-        console.log('✅ Database cleared successfully!');
-        process.exit(0);
-    } catch (error) {
-        console.error('❌ Error clearing database:', error);
-        process.exit(1);
+const clearDb = async () => {
+  try {
+    const mongoUri = process.env.MONGO_URI;
+    if (!mongoUri) {
+      throw new Error("MONGO_URI not specified in backend/.env");
     }
-}
 
-clearDB();
+    console.log("🔌 Connecting to MongoDB (dbName: fairhire)...");
+    await mongoose.connect(mongoUri, {
+      dbName: "fairhire"
+    });
+    console.log("✅ MongoDB connected. Starting database reset...");
+
+    // 1. Clear Candidates
+    const candResult = await Candidate.deleteMany({});
+    console.log(`Candidates cleared (${candResult.deletedCount} documents deleted)`);
+
+    // 2. Clear Roles
+    const roleResult = await Role.deleteMany({});
+    console.log(`Roles cleared (${roleResult.deletedCount} documents deleted)`);
+
+    // 3. Clear Evaluations
+    const evalResult = await Evaluation.deleteMany({});
+    console.log(`Evaluations cleared (${evalResult.deletedCount} documents deleted)`);
+
+    // 4. Clear Interview Evaluations
+    const interviewResult = await InterviewEvaluation.deleteMany({});
+    console.log(`Interview evaluations cleared (${interviewResult.deletedCount} documents deleted)`);
+
+    // 5. Clear Logs
+    const logResult = await Logs.deleteMany({});
+    console.log(`Logs cleared (${logResult.deletedCount} documents deleted)`);
+
+    // 6. Verify counts are 0
+    const candCount = await Candidate.countDocuments({});
+    const roleCount = await Role.countDocuments({});
+    const evalCount = await Evaluation.countDocuments({});
+    const interviewCount = await InterviewEvaluation.countDocuments({});
+    const logCount = await Logs.countDocuments({});
+
+    console.log("\n📊 Verification Check:");
+    console.log(`- Candidates: ${candCount}`);
+    console.log(`- Roles: ${roleCount}`);
+    console.log(`- Evaluations: ${evalCount}`);
+    console.log(`- Interview Evaluations: ${interviewCount}`);
+    console.log(`- Logs: ${logCount}`);
+
+    if (candCount === 0 && roleCount === 0 && evalCount === 0 && interviewCount === 0 && logCount === 0) {
+      console.log("\n✨ Database reset complete successfully!");
+    } else {
+      console.log("\n⚠️ Database reset incomplete: some documents remain!");
+    }
+  } catch (error) {
+    console.error("🔥 Error resetting database:", error);
+  } finally {
+    await mongoose.disconnect();
+    console.log("🔌 Disconnected from MongoDB.");
+  }
+};
+
+clearDb();

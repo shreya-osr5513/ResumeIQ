@@ -7,7 +7,7 @@ import crypto from "crypto";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const evaluateResume = async (resumeText, role) => {
+export const evaluateResume = async (resumeText, role, skills = []) => {
   return new Promise((resolve, reject) => {
     // Generate a unique temp file to hold the resume text
     const tempFileName = `resume_${crypto.randomUUID()}.txt`;
@@ -22,10 +22,11 @@ export const evaluateResume = async (resumeText, role) => {
     }
 
     const pythonScript = path.join(__dirname, "../ml/predict_resume.py");
+    const skillsString = (skills || []).join(",");
     
     execFile(
       "python",
-      [pythonScript, tempFilePath, role], // Passing file path instead of full text!
+      [pythonScript, tempFilePath, role, skillsString], // Passing file path and skills list!
       { maxBuffer: 1024 * 1024 * 10 },
       (error, stdout, stderr) => {
         // ALWAYS clean up the temp file after execution
