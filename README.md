@@ -1,209 +1,210 @@
-# ResumeIQ — AI-Powered Ethical Recruitment Platform
+# 1. Hero Section
+<h1 align="center">ResumeIQ</h1>
 
-![ResumeIQ](https://img.shields.io/badge/ResumeIQ-AI--Recruitment-4F46E5?style=for-the-badge)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=nodedotjs)
-![Python](https://img.shields.io/badge/Python-ML-3776AB?style=for-the-badge&logo=python)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)
-![License](https://img.shields.io/badge/License-ISC-yellow?style=for-the-badge)
+<p align="center">
+  <b>AI-Powered Hiring Intelligence Platform for Ethical, Explainable, and Data-Driven Recruitment.</b>
+</p>
 
-> **Talent is universal. Opportunity should be too.**  
-> ResumeIQ eliminates hiring bias and automates recruitment — so candidates are judged on skill, not background.
-
----
-
-<!-- Replace the line below with an actual screenshot or demo GIF -->
-<!-- ![ResumeIQ Demo](./assets/demo.gif) -->
-
-> 📸 **Tip:** Add a screenshot or screen recording of your dashboard here — it's the first thing recruiters look at.
-
----
-
-## 🧩 The Problem
-
-Traditional hiring is broken:
-- Recruiters spend **~6 seconds** per resume, missing qualified candidates
-- Unconscious bias filters out talent based on name, university, or gender
-- Manual screening of 100+ applications per role is slow and inconsistent
-
-**ResumeIQ fixes this** with an end-to-end AI pipeline that screens, interviews, and explains — fairly and at scale.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/FAISS-1C2C56?style=for-the-badge" alt="FAISS" />
+  <img src="https://img.shields.io/badge/Sentence_Transformers-FF9900?style=for-the-badge" alt="Sentence Transformers" />
+  <img src="https://img.shields.io/badge/Groq_LLM-f37626?style=for-the-badge" alt="Groq LLM" />
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License" />
+</p>
 
 ---
 
-## 🚀 Key Features
+## 📖 2. Overview
 
-### 1. ML-Driven ATS & Resume Ranking
-- Ranks resumes against job roles using **TF-IDF vectorization + Random Forest** (Scikit-Learn)
-- Extracts technical competencies and maps them to industry-standard requirements
-- Achieves **~92% matching accuracy**, reducing screening time by **85%**
+**The Problem:** Traditional hiring relies heavily on keyword matching and subjective evaluations. Recruiters spend countless hours manually screening resumes, often missing out on highly qualified candidates due to unconscious biases or rigid keyword filters.
 
-### 2. BiasGuard™ — Ethical Hiring Engine
-- Auto-detects and redacts identity markers: **gender, pedigree, institution name**
-- Computes a unique **Fairness Score** per candidate to ensure objective evaluation
-- Projects a **30% reduction in cognitive bias** across hiring pipelines
-
-### 3. Dynamic AI Technical Interview
-- Integrates **Groq LLaMA-3** to generate 5+ role-specific technical questions in real-time
-- Standardized, self-paced assessment flow with **automated scoring + transcript generation**
-- Sub-second question generation latency across diverse tech stacks
-
-### 4. Explainable AI (XAI) HR Dashboard
-- Generates human-readable **Strengths & Weaknesses** reports for every candidate score
-- Real-time visibility into pipeline metrics: conversion rates, skill distribution, applicant flow
-- **100% decision transparency** — no black-box outputs
+**The Solution:** **ResumeIQ** combines ATS screening, semantic matching, fairness-aware evaluation, dynamic AI interviews, and recruiter intelligence dashboards into a single, cohesive platform. It ensures candidates are evaluated on their true skills while giving recruiters an intelligent toolkit to make faster, fairer, and more explainable hiring decisions.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ 3. Core Features
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 19 (Vite), React Router 7, Vanilla CSS |
-| Backend | Node.js, Express.js |
-| Database | MongoDB Atlas (Mongoose ODM) |
-| ML Layer | Python, Scikit-Learn, Pandas, TF-IDF, Random Forest |
-| AI / LLM | Groq SDK (LLaMA-3), PDF-parse |
-| DevOps | Git, GitHub, Docker-ready |
+### 👨‍💻 Candidate Side
+*   **🏢 LinkedIn-style Jobs Board:** Discover and apply for open positions in a familiar, intuitive interface.
+*   **📄 Resume Upload & ATS Screening:** Seamless document parsing and initial screening.
+*   **⚖️ Bias-Aware Evaluation:** Redacts identity markers to ensure a fair initial review.
+*   **🧠 Semantic Resume Matching:** Goes beyond keywords to understand the actual context and depth of skills.
+*   **📉 Skill Gap Analysis:** Provides actionable insights to candidates on what they lack for a specific role.
+*   **🤖 Dynamic AI Interview Generation:** Custom, adaptive interviews based on the candidate's resume and job description.
+*   **💻 Mandatory Technical Assessments:** Ensures baseline technical competency.
+
+### 👩‍💼 Recruiter Side
+*   **🎛️ AI Recruiter Dashboard:** A centralized hub for managing the entire hiring pipeline.
+*   **⚖️ Candidate Comparison Engine:** Side-by-side, data-driven comparison of top applicants.
+*   **🗄️ Candidate Audit Drawer:** Deep dive into a specific candidate's evaluation, scores, and interview responses.
+*   **📊 Recruiter Intelligence Analytics:** High-level metrics on job performance and pipeline health.
+*   **📝 Dynamic Role Creation:** Easily generate and configure new job openings with AI assistance.
+*   **👥 Candidate & Role Management:** Streamlined tracking of applicants across different stages.
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ 4. Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                      Frontend (React 19)                 │
-│         Candidate Portal | HR Dashboard | Evaluator      │
-└───────────────────────┬─────────────────────────────────┘
-                        │ REST API
-┌───────────────────────▼─────────────────────────────────┐
-│                   Backend (Node.js / Express)            │
-│                                                          │
-│   ┌─────────────┐   ┌──────────────┐   ┌─────────────┐  │
-│   │  Resume     │   │  BiasGuard™  │   │  Interview  │  │
-│   │  Ranker     │   │  Engine      │   │  Engine     │  │
-│   └──────┬──────┘   └──────┬───────┘   └──────┬──────┘  │
-│          │                 │                   │         │
-│   ┌──────▼─────────────────▼───────────────────▼──────┐  │
-│   │              ML Layer (Python / Scikit-Learn)      │  │
-│   │         TF-IDF Vectorizer + Random Forest          │  │
-│   └───────────────────────────────────────────────────┘  │
-│                        │                                 │
-│   ┌────────────────────▼──────────────────────────────┐  │
-│   │              MongoDB Atlas (Database)              │  │
-│   └───────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────┘
-                        │
-            ┌───────────▼────────────┐
-            │   Groq LLaMA-3 (LLM)  │
-            │   Interview Questions  │
-            └────────────────────────┘
+ResumeIQ leverages a modern, distributed architecture for scalability and performance.
+
+*   **Frontend:** React + Vite
+*   **Backend API Layer:** Node.js
+*   **ML Layer:** Python
+*   **Database:** MongoDB Atlas
+
+**Key AI Technologies:**
+*   **Sentence Transformers:** For generating rich embeddings of resumes and job descriptions.
+*   **FAISS:** Facebook AI Similarity Search for blazingly fast semantic matching.
+*   **Groq LLM:** Powering dynamic AI interviews and natural language insights.
+*   **Scikit-learn:** For predictive modeling and traditional ML tasks.
+
+```mermaid
+graph TD
+    A[Frontend: React + Vite] -->|REST API| B(Node.js API Layer)
+    B -->|Mongoose| D[(MongoDB Atlas)]
+    B <-->|gRPC / HTTP| C{Python ML Layer}
+    
+    subgraph Machine Learning Layer
+    C --> E[Sentence Transformers]
+    C --> F[FAISS]
+    C --> G[Scikit-learn]
+    end
+    
+    B <-->|API| H[Groq LLM]
 ```
 
 ---
 
-## 📂 Project Structure
+## 🔄 5. End-to-End Workflow
 
+1.  **Recruiter creates role:** HR defines the job requirements and publishes the opening.
+2.  **JD intelligence extracts skills:** The AI automatically extracts core competencies and requirements from the Job Description.
+3.  **Candidate uploads resume:** Applicant applies via the Jobs Board.
+4.  **ATS + Semantic scoring:** Resumes are parsed, and semantic matching computes a relevance score.
+5.  **Skill gap analysis:** The system identifies missing skills for both the recruiter's and candidate's view.
+6.  **AI interview generation:** A tailored interview is dynamically generated based on the candidate's profile and the role's needs.
+7.  **Interview evaluation:** The candidate completes the assessment, and AI grades the responses.
+8.  **Recruiter analytics and comparison:** HR reviews the top candidates through the comparison engine and makes data-backed decisions.
+
+---
+
+## 🛠️ 6. Tech Stack
+
+| Domain | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19, Vite, Vanilla CSS, React Router |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas, Mongoose |
+| **Machine Learning** | Python, Scikit-learn, Pandas, FAISS, Sentence Transformers |
+| **LLM Integrations** | Groq API (LLaMA 3) |
+| **Parsing & Others**| PDF-parse |
+
+---
+
+## 📸 7. Screenshots Section
+
+### Candidate Portal
+![Jobs Board](./assets/jobs_board_placeholder.png "Jobs Board")
+![ATS Report](./assets/ats_report_placeholder.png "ATS Report")
+![Dynamic Interview](./assets/dynamic_interview_placeholder.png "Dynamic Interview")
+
+### Recruiter Portal
+![Dashboard](./assets/dashboard_placeholder.png "Recruiter Dashboard")
+![Candidate Drawer](./assets/candidate_drawer_placeholder.png "Candidate Audit Drawer")
+![Analytics](./assets/analytics_placeholder.png "Intelligence Analytics")
+![Comparison Wizard](./assets/comparison_wizard_placeholder.png "Comparison Wizard")
+
+*(Replace markdown image placeholders with actual screenshots in the `/assets` folder)*
+
+---
+
+## 💻 8. Installation Guide
+
+### Prerequisites
+- Node.js (v18+)
+- Python (v3.9+)
+- MongoDB Atlas Account
+- Groq API Key
+
+### Backend Setup
+```bash
+cd backend
+npm install
 ```
+Create a `.env` file in the `backend` directory:
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+GROQ_API_KEY=your_groq_api_key
+```
+*(Optional) Install Python ML dependencies if running local ML services:*
+```bash
+pip install pandas scikit-learn sentence-transformers faiss-cpu
+```
+Start the backend server:
+```bash
+npm run dev
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+```
+Start the development server:
+```bash
+npm run dev
+```
+
+---
+
+## 📁 9. Project Structure
+
+```text
 ResumeIQ/
 ├── backend/
-│   ├── ml/                 # Trained ML models (.pkl files) + scripts
-│   ├── routes/             # API endpoints: Candidate, HR, Interview
-│   ├── services/           # Core logic: BiasGuard, Evaluation, Scoring
-│   ├── models/             # MongoDB schemas (Mongoose)
-│   └── server.js           # Entry point
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── ml/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   └── server.js
 ├── frontend/
+│   ├── public/
 │   ├── src/
-│   │   ├── pages/          # Main views: Dashboard, Portal, Evaluator
-│   │   ├── components/     # Reusable UI components
-│   │   ├── assets/         # Images, icons
-│   │   └── index.css       # Global styles
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── index.html
+│   └── vite.config.js
 └── README.md
 ```
 
 ---
 
-## ⚙️ Getting Started
+## 🚀 10. Future Enhancements
 
-### Prerequisites
-- Node.js v18+
-- Python v3.9+
-- MongoDB Atlas account
-- Groq Cloud API key
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/shreya-osr5513/ResumeIQ.git
-cd ResumeIQ
-```
-
-### 2. Backend Setup
-```bash
-cd backend
-npm install
-```
-
-Create a `.env` file:
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-GROQ_API_KEY=your_groq_api_key
-```
-
-Install Python ML dependencies:
-```bash
-pip install pandas scikit-learn
-```
-
-Start the backend:
-```bash
-npm run dev
-```
-
-### 3. Frontend Setup
-```bash
-cd ..
-npm install
-npm run dev
-```
-
-App runs at `http://localhost:5173`
+*   📧 **Email notifications:** Automated updates for candidates regarding their application status.
+*   🎥 **Video interviews:** AI-proctored asynchronous video assessments.
+*   💡 **Resume recommendations:** Actionable feedback for candidates to improve their CVs.
+*   🤖 **AI hiring copilot:** A conversational assistant for recruiters to query applicant data naturally.
+*   📈 **Advanced analytics:** Predictive modeling for candidate success and retention.
 
 ---
 
-## 📊 Performance Highlights
+## 🤝 11. Contributors
 
-| Metric | Result |
-|---|---|
-| Resume matching accuracy | ~92% |
-| Screening time reduction | 85% |
-| Cognitive bias reduction (projected) | 30% |
-| Decision transparency | 100% (XAI reports) |
-| Interview question latency | Sub-second |
+*   **Shreya Gupta** - *Creator & Lead Developer* - [GitHub](https://github.com/shreya-osr5513)
 
 ---
-
-## 🗺️ Roadmap
-
-- [ ] Multi-role batch screening support
-- [ ] Resume parsing for non-English CVs
-- [ ] Bias audit logs and compliance exports
-- [ ] Integration with LinkedIn / Naukri job boards
-- [ ] Candidate feedback portal
-
----
-
-## 👩💻 Author
-
-**Shreya Gupta**  
-B.Tech ECE-AI @ IGDTUW | Sofware & AI Engineering enthusiast
-[GitHub](https://github.com/shreya-osr5513) · [LinkedIn](https://linkedin.com)
-
----
-
-## 📄 License
-
-Distributed under the ISC License. See `LICENSE` for more information.
-
----
-
-> ⭐ If this project resonates with you, a star goes a long way!
+<p align="center">Made with ❤️ for fairer hiring.</p>
